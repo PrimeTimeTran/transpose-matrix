@@ -3,12 +3,20 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-@app.route("/", methods=['GET', 'POST'])
+class MatrixTransformer:
+    def __init__(self, matrix):
+        self.matrix = matrix
+
+    def transpose(self):
+        # O(M*N) where m is the length of the shortest list and n is the number of lists
+        return [col for col in zip(*self.matrix)]
+
+
+@app.route("/", methods=['POST'])
 def home():
     matrix = request.get_json()
-
-    # O(M*N) where m is the length of the shortest list and n is the number of lists
-    res = [col for col in zip(*matrix)]
+    matrix_transformer = MatrixTransformer(matrix)
+    res = matrix_transformer.transpose()
     return jsonify(res)
 
 
