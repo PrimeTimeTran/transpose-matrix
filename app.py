@@ -8,6 +8,7 @@ def home():
     res = []
     matrix = request.get_json()
 
+    # O(M*N) where m is the length of the shortest list and n is the number of lists
     for col in zip(*matrix):
         res.append(col)
     return jsonify(res)
