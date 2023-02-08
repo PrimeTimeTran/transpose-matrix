@@ -13,6 +13,7 @@ A simple REST api for transposing matrices.
 - clone repo
 - python3 -m venv venv
 - source venv/bin/activate
+- pip3 install -r requirements.txt
 - flask run
 
 ## Test API
